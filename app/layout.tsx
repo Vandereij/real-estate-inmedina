@@ -2,7 +2,8 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import "./globals.css";
-import { createSupabaseServerClient } from "@/lib/auth"; // from your earlier code
+import { createSupabaseServerClient } from "@/lib/auth";
+import { GoogleTagManager } from '@next/third-parties/google';
 
 export default async function RootLayout({
   children,
@@ -24,6 +25,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="G-XTDJH4XHV1" />
       <body className="min-h-screen bg-background text-[#1e1e1e]">
         <main className="flex flex-col min-h-screen">
           {/* pass admin + user info down */}
