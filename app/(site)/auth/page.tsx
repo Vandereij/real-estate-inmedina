@@ -3,14 +3,6 @@
 import { useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase-client";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-	title: "Sign In - Admin Access | Real Estate InMedina",
-	description:
-		"Secure login for InMedina property management. Access your admin dashboard to manage listings, inquiries, and client communications. Magic link authentication for enhanced security.",
-	robots: "none"
-};
 
 export default function AuthPage() {
 	const searchParams = useSearchParams();
