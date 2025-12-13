@@ -7,8 +7,7 @@ function getBaseUrl() {
   
   if (!env) return "http://localhost:3000";
 
-  // VERCEL_URL is often like "my-app.vercel.app" (no protocol)
-  const withProtocol = env.startsWith("http") ? env : `https://${env}`;
+  const withProtocol = env;
   return withProtocol.replace(/\/$/, "");
 }
 
