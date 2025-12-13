@@ -6,8 +6,15 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import PropertyCardList from "@/components/property-card-list";
 import Image from "next/image";
+import { Metadata } from "next";
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+	title: "Authentic Moroccan Properties & Riads for Sale | Real Estate InMedina",
+	description:
+		"Discover exceptional riads, villas, and coastal properties in Morocco. Expert guidance from property sales to renovation, backed by 20+ years of hospitality experience. Traditional craftsmanship meets modern comfort.",
+};
 
 export default async function HomePage() {
 	const supabase = await useMemo(() => createClient(), []);

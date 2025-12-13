@@ -2,6 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ContactCta from "@/components/contact-cta";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "About Us - Moroccan Property Experts Since 2000 | Real Estate InMedina",
+	description:
+		"Meet the InMedina founders. From hospitality to real estate, we bring 20+ years of lived experience in Moroccan medinas to help you find, restore, and enjoy authentic properties with genuine care and local insight.",
+};
 
 export default function AboutInmedina() {
 	return (

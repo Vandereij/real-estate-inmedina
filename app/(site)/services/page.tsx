@@ -4,6 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ContactCta from "@/components/contact-cta";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Our Services - Property Sales, Renovation & Consulting | Real Estate InMedina",
+	description:
+		"Expert support for buying, restoring, and managing Moroccan properties. From curated riad selection to traditional renovation guidance and strategic consulting. Grounded, practical advice at every stage.",
+};
 
 export default function ServicesPage() {
 	return (

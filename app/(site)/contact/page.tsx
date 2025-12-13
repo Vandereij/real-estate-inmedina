@@ -7,6 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import CIcon from "@coreui/icons-react";
 import { cibWhatsapp } from "@coreui/icons";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Contact Us - Get Expert Guidance on Moroccan Property | Real Estate InMedina",
+	description:
+		"Ready to explore Moroccan properties? Contact our on-the-ground team for honest advice on buying, renting, or restoring riads and villas. WhatsApp or email consultations available.",
+};
 
 type Status = "idle" | "loading" | "success" | "error";
 
