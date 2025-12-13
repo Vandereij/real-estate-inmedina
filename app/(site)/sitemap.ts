@@ -9,6 +9,8 @@ export default async function sitemap() {
 		"/services",
 		"/about-inmedina",
 		"/contact",
+		"/terms",
+		"/privacy",
 	].map((p) => ({
 		url: `${base}${p || "/"}`,
 		lastModified: new Date(),
