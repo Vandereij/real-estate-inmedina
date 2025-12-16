@@ -64,7 +64,8 @@ export function AddressMapLookup({
 			const formatted = result.display_name;
 
 			// Parse address components for address line 1 and 2
-			const addr = result.address || {};console.log(addr)
+			const addr = result.address || {};
+			console.log(addr);
 
 			// Build address line 1 (street info)
 			const addressLine1Parts = [
@@ -155,7 +156,7 @@ export function AddressMapLookup({
 						<Label>Map Preview</Label>
 						<div className="h-[300px] w-full rounded-lg overflow-hidden border border-gray-200">
 							<iframe
-								src={`https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=${previewCoords.lat},${previewCoords.lng}&zoom=15&maptype=roadmap`}
+								src={`https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=${previewCoords.lat},${previewCoords.lng}&zoom=16&markers=color:red|label:P|${previewCoords.lat},${previewCoords.lng}`}
 								className="w-full h-full border-0"
 								loading="lazy"
 								title="Map preview"

@@ -79,7 +79,7 @@ export default async function PropertyDetail({ params }: Props) {
 
 	const mapEmbedUrl =
 		property.latitude && property.longitude
-			? `https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=${property.latitude},${property.longitude}&zoom=15&maptype=roadmap`
+			? `https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=${property.latitude},${property.longitude}&zoom=16&markers=color:red|label:P|${property.latitude},${property.longitude}`
 			: null;
 
 	function getAmenitiesFromProperty(propertyAmenities: any) {
