@@ -4,18 +4,9 @@ import { useState } from "react";
 import { Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import {
-	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTitle,
-	DialogDescription,
-	DialogFooter,
-	DialogTrigger,
-} from "./ui/dialog";
 import CIcon from "@coreui/icons-react";
 import { cibWhatsapp } from "@coreui/icons";
+import EnquiryDialog from "./enquiry-dialog";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -23,14 +14,6 @@ export default function ContactCta() {
 	const [newsletterEmail, setNewsletterEmail] = useState("");
 	const [newsletterStatus, setNewsletterStatus] = useState<Status>("idle");
 	const [newsletterMessage, setNewsletterMessage] = useState("");
-
-	// enquiry modal state
-	const [isDialogOpen, setIsDialogOpen] = useState(false);
-	const [enquiryName, setEnquiryName] = useState("");
-	const [enquiryEmail, setEnquiryEmail] = useState("");
-	const [enquiryMessage, setEnquiryMessage] = useState("");
-	const [enquiryStatus, setEnquiryStatus] = useState<Status>("idle");
-	const [enquiryFeedback, setEnquiryFeedback] = useState("");
 
 	const handleNewsletterSubscribe = async () => {
 		if (!newsletterEmail) {
@@ -69,56 +52,6 @@ export default function ContactCta() {
 		}
 	};
 
-	const handleEnquirySubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-
-		if (!enquiryEmail || !enquiryMessage) {
-			setEnquiryStatus("error");
-			setEnquiryFeedback(
-				"Please provide at least your email and a message."
-			);
-			return;
-		}
-
-		setEnquiryStatus("loading");
-		setEnquiryFeedback("");
-
-		try {
-			const res = await fetch("/api/enquiry", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					name: enquiryName,
-					email: enquiryEmail,
-					message: enquiryMessage,
-				}),
-			});
-
-			const data = await res.json();
-
-			if (!res.ok || data?.error) {
-				setEnquiryStatus("error");
-				setEnquiryFeedback(
-					data?.error || "Failed to send enquiry. Please try again."
-				);
-				return;
-			}
-
-			setEnquiryStatus("success");
-			setEnquiryFeedback(data?.message || "Your enquiry has been sent.");
-			setEnquiryName("");
-			setEnquiryEmail("");
-			setEnquiryMessage("");
-
-			// optionally close after a short delay; or comment this out if you prefer manual close
-			setIsDialogOpen(false);
-		} catch (err) {
-			console.error(err);
-			setEnquiryStatus("error");
-			setEnquiryFeedback("Network error. Please try again.");
-		}
-	};
-
 	return (
 		<section className="bg-[#f8f3ee]">
 			<div className="mx-auto max-w-6xl px-4 py-20 text-center md:px-8">
@@ -131,105 +64,18 @@ export default function ContactCta() {
 				</p>
 
 				<div className="mt-8 flex justify-center gap-3">
-					{/* Email button opens modal */}
-					<Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-						<DialogTrigger asChild>
+					<EnquiryDialog
+						source="contact-cta"
+						subject="Website enquiry"
+						trigger={
 							<Button variant="default" className="rounded-full">
 								<Mail className="mr-2 h-4 w-4" /> Email
 							</Button>
-						</DialogTrigger>
-						<DialogContent className="sm:max-w-md">
-							<DialogHeader>
-								<DialogTitle>Send us an enquiry</DialogTitle>
-								<DialogDescription>
-									Tell us a bit about what you&apos;re looking
-									for and we&apos;ll get back to you.
-								</DialogDescription>
-							</DialogHeader>
+						}
+						// keep your styling consistent with CTA background
+						contentClassName="sm:max-w-md"
+					/>
 
-							<form
-								onSubmit={handleEnquirySubmit}
-								className="space-y-4"
-							>
-								<div className="text-left space-y-2">
-									<label className="text-sm font-medium">
-										Name
-									</label>
-									<Input
-										placeholder="Your name"
-										value={enquiryName}
-										onChange={(e) =>
-											setEnquiryName(e.target.value)
-										}
-										className="bg-[#f8f3ee]/80"
-										required
-									/>
-								</div>
-								<div className="text-left space-y-2">
-									<label className="text-sm font-medium">
-										Email
-									</label>
-									<Input
-										type="email"
-										placeholder="you@domain.com"
-										value={enquiryEmail}
-										onChange={(e) =>
-											setEnquiryEmail(e.target.value)
-										}
-										className="bg-[#f8f3ee]/80"
-										required
-									/>
-								</div>
-								<div className="text-left space-y-2">
-									<label className="text-sm font-medium">
-										Message
-									</label>
-									<Textarea
-										placeholder="Tell us about your property needs or renovation ideas..."
-										value={enquiryMessage}
-										onChange={(e) =>
-											setEnquiryMessage(e.target.value)
-										}
-										className="bg-[#f8f3ee]/80 min-h-[120px]"
-										required
-									/>
-								</div>
-
-								{enquiryFeedback && (
-									<p
-										className={`text-sm ${
-											enquiryStatus === "error"
-												? "text-red-600"
-												: "text-green-700"
-										}`}
-									>
-										{enquiryFeedback}
-									</p>
-								)}
-
-								<DialogFooter className="mt-2">
-									<Button
-										type="button"
-										variant="outline"
-										onClick={() => setIsDialogOpen(false)}
-									>
-										Cancel
-									</Button>
-									<Button
-										type="submit"
-										className="bg-[#c98a5a] text-white hover:bg-[#b37750]"
-										disabled={enquiryStatus === "loading"}
-									>
-										{enquiryStatus === "loading"
-											? "Sending..."
-											: "Send enquiry"}
-									</Button>
-								</DialogFooter>
-							</form>
-						</DialogContent>
-					</Dialog>
-
-					{/* WhatsApp button unchanged */}
 					<Button variant="default" className="rounded-full">
 						<CIcon
 							className="fill-accent-foreground"

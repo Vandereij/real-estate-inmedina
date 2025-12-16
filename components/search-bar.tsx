@@ -40,7 +40,7 @@ interface PropertyRow {
   bathrooms: number | null;
   location_id: string | null;
   availability_type: "sale" | "rent";
-  property_type: "riad" | "terrain";
+  property_type: "house" | "riad" | "apartment" | "villa" | "terrain";
   status: string;
   title: string;
 }
@@ -54,7 +54,7 @@ export default function SearchBar({ isAdmin = false }: SearchBarProps) {
   const [availabilityType, setAvailabilityType] = useState<
     "rent" | "sale" | ""
   >("");
-  const [propertyType, setPropertyType] = useState<"riad" | "terrain" | "">(
+  const [propertyType, setPropertyType] = useState<"house" | "riad" | "apartment" | "villa" | "terrain" | "">(
     ""
   );
   const [locationId, setLocationId] = useState<string | "">("");
@@ -322,7 +322,7 @@ export default function SearchBar({ isAdmin = false }: SearchBarProps) {
                 <Select
                   value={propertyType || "__all__"}
                   onValueChange={(v) =>
-                    setPropertyType(v === "__all__" ? "" : (v as "riad" | "terrain"))
+                    setPropertyType(v === "__all__" ? "" : (v as "house" | "riad" | "apartment" | "villa" | "terrain"))
                   }
                 >
                   <SelectTrigger className="h-10 justify-between rounded-full border-neutral-200 bg-white/80 px-3 text-sm">
@@ -333,7 +333,10 @@ export default function SearchBar({ isAdmin = false }: SearchBarProps) {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="__all__">Any</SelectItem>
+                    <SelectItem value="house">House</SelectItem>
                     <SelectItem value="riad">Riads</SelectItem>
+                    <SelectItem value="apartment">Apartment</SelectItem>
+                    <SelectItem value="villa">Villa</SelectItem>
                     <SelectItem value="terrain">Terrains</SelectItem>
                   </SelectContent>
                 </Select>

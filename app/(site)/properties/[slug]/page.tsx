@@ -7,6 +7,10 @@ import { PropertyGallery } from "@/components/property-gallery";
 import Image from "next/image";
 import nmlogo from "../../../../public/nmlogo.png";
 
+// ✅ NEW
+import EnquiryDialog from "@/components/enquiry-dialog";
+import { Button } from "@/components/ui/button";
+
 type Props = {
 	params: Promise<{ slug: string }>;
 };
@@ -33,7 +37,6 @@ export async function generateMetadata({
 		console.error("[generateMetadata] Supabase error:", error);
 	}
 
-	/** Fallback metadata if property is missing */
 	const fallback: Metadata = {
 		title: "Property not found | Real Estate InMedina",
 		description:
@@ -68,18 +71,15 @@ export default async function PropertyDetail({ params }: Props) {
 
 	if (!property || property.status !== "published") return notFound();
 
-	// --- Placeholder Data for New Sections ---
 	const inmedina = {
 		title: "InMedina Team is here to respond to all your enquiries. Don't esitate to contact us via the form or WhatsApp",
 	};
 
-	const floorPlanUrl = property.floor_plan_image_url; // Placeholder
-	const virtualTourUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Placeholder
+	const floorPlanUrl = property.floor_plan_image_url;
 
-	// Generate map embed URL from property coordinates
 	const mapEmbedUrl =
 		property.latitude && property.longitude
-			? `https://maps.google.com/maps?q=${property.latitude},${property.longitude}&hl=en;z=15&amp;output=embed`
+			? `https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=${property.latitude},${property.longitude}&zoom=15&maptype=roadmap`
 			: null;
 
 	function getAmenitiesFromProperty(propertyAmenities: any) {
@@ -87,7 +87,6 @@ export default async function PropertyDetail({ params }: Props) {
 			return {};
 		}
 
-		// Handle if amenities is stored as an array
 		const amenitiesData = Array.isArray(propertyAmenities)
 			? propertyAmenities[0]
 			: propertyAmenities;
@@ -96,7 +95,6 @@ export default async function PropertyDetail({ params }: Props) {
 
 		Object.entries(amenitiesData).forEach(([category, items]) => {
 			if (typeof items === "object" && items !== null) {
-				// Only include active amenities
 				const activeAmenities = Object.entries(items)
 					.filter(([_, value]) => {
 						if (typeof value === "boolean") return value === true;
@@ -119,9 +117,9 @@ export default async function PropertyDetail({ params }: Props) {
 
 		return transformed;
 	}
+
 	return (
 		<article className="bg-white">
-			{/* --- Cover Image --- */}
 			<header className="relative min-h-[300px] w-full overflow-hidden shadow-lg">
 				<img
 					src={property.cover_image_url}
@@ -137,11 +135,10 @@ export default async function PropertyDetail({ params }: Props) {
 					</div>
 				</div>
 			</header>
+
 			<div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 				<div className="lg:grid lg:grid-cols-3 lg:gap-12">
-					{/* --- Main Content Column --- */}
 					<div className="lg:col-span-2">
-						{/* Details Grid */}
 						<div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-left border-t border-b border-gray-200 py-8 mb-12">
 							<div>
 								<strong className="block text-sm font-normal text-gray-500 mb-1">
@@ -178,7 +175,6 @@ export default async function PropertyDetail({ params }: Props) {
 							</div>
 						</div>
 
-						{/* Description */}
 						<section className="mb-12">
 							<h2 className="text-2xl font-light text-gray-800 mb-4">
 								Description
@@ -191,7 +187,6 @@ export default async function PropertyDetail({ params }: Props) {
 							/>
 						</section>
 
-						{/* Amenities */}
 						{(() => {
 							const amenities = getAmenitiesFromProperty(
 								property.amenities
@@ -234,7 +229,6 @@ export default async function PropertyDetail({ params }: Props) {
 							);
 						})()}
 
-						{/* Floor Plan */}
 						{floorPlanUrl && (
 							<section className="mb-12">
 								<h2 className="text-2xl font-light text-gray-800 mb-6">
@@ -248,29 +242,11 @@ export default async function PropertyDetail({ params }: Props) {
 							</section>
 						)}
 
-						{/* Virtual Tour */}
-						{/* <section className="mb-12">
-							<h2 className="text-2xl font-light text-gray-800 mb-6">
-								Virtual Tour
-							</h2>
-							<div className="aspect-w-16 aspect-h-9">
-								<iframe
-									src={virtualTourUrl}
-									frameBorder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowFullScreen
-									className="w-full h-full rounded-md"
-								></iframe>
-							</div>
-						</section> */}
-
-						{/* Gallery */}
 						<PropertyGallery
 							images={property.gallery || []}
 							propertyTitle={property.title}
 						/>
 
-						{/* Map */}
 						{mapEmbedUrl && (
 							<section>
 								<h2 className="text-2xl font-light text-gray-800 mb-6">
@@ -295,6 +271,7 @@ export default async function PropertyDetail({ params }: Props) {
 								<h3 className="text-xl font-medium text-gray-800 mb-6">
 									Contact for more information
 								</h3>
+
 								<div className="flex items-center space-x-4 mb-6">
 									<Image
 										alt="InMedina Logo"
@@ -308,12 +285,20 @@ export default async function PropertyDetail({ params }: Props) {
 										</div>
 									</div>
 								</div>
-								<button
-									type="button"
-									className="w-full bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 transition-colors duration-200 text-center font-medium"
-								>
-									Schedule a Viewing
-								</button>
+
+								{/* ✅ NEW: Enquiry dialog trigger */}
+								<EnquiryDialog
+									source="property-detail"
+									propertyTitle={property.title}
+									propertySlug={property.slug} // enables auto property URL in the email
+									subject={`Enquiry: ${property.title}`}
+									defaultMessage={`Hi,\n\nI'm interested in "${property.title}". Could you share more details and the next steps to arrange a viewing?\n\nThank you.`}
+									trigger={
+										<Button className="w-full bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 transition-colors duration-200 text-center font-medium">
+											Schedule a Viewing
+										</Button>
+									}
+								/>
 							</div>
 						</div>
 					</aside>

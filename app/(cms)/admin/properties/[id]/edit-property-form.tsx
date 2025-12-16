@@ -207,7 +207,7 @@ export default function EditPropertyForm() {
 	const [availabilityType, setAvailabilityType] = useState<"sale" | "rent">(
 		"sale"
 	);
-	const [propertyType, setPropertyType] = useState<"riad" | "apartment">(
+	const [propertyType, setPropertyType] = useState<"house" | "riad" | "apartment" | "villa" | "terrain">(
 		"riad"
 	);
 	const [propertyStatus, setPropertyStatus] = useState<"new" | "under_offer" | "sold">(
@@ -632,18 +632,27 @@ export default function EditPropertyForm() {
 									<Select
 										value={propertyType}
 										onValueChange={(
-											value: "riad" | "apartment"
+											value: "riad" | "apartment" | "house" | "villa" | "terrain"
 										) => setPropertyType(value)}
 									>
 										<SelectTrigger id="property-type">
 											<SelectValue />
 										</SelectTrigger>
 										<SelectContent>
+											<SelectItem value="house">
+												House
+											</SelectItem>
 											<SelectItem value="riad">
 												Riad
 											</SelectItem>
 											<SelectItem value="apartment">
 												Apartment
+											</SelectItem>
+											<SelectItem value="villa">
+												Villa
+											</SelectItem>
+											<SelectItem value="terrain">
+												Terrain
 											</SelectItem>
 										</SelectContent>
 									</Select>
