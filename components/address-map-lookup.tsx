@@ -155,7 +155,7 @@ export function AddressMapLookup({
 						<Label>Map Preview</Label>
 						<div className="h-[300px] w-full rounded-lg overflow-hidden border border-gray-200">
 							<iframe
-								src={`https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=${property.latitude},${property.longitude}&zoom=15&maptype=roadmap`}
+								src={`https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=${previewCoords.lat},${previewCoords.lng}&zoom=15&maptype=roadmap`}
 								className="w-full h-full border-0"
 								loading="lazy"
 								title="Map preview"
