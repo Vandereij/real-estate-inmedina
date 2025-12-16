@@ -252,12 +252,18 @@ export default async function PropertyDetail({ params }: Props) {
 								<h2 className="text-2xl font-light text-gray-800 mb-6">
 									Location
 								</h2>
+								{property.location_name && (
+									<p className="text-sm text-gray-500">
+										{property.location_name}
+									</p>
+								)}
 								<div className="h-[400px] w-full">
 									<iframe
 										src={mapEmbedUrl}
 										className="w-full h-full border-0 rounded-md"
 										loading="lazy"
-										title="Property location map"
+										referrerPolicy="no-referrer-when-downgrade"
+										title={`Map location of ${property.title}`}
 									></iframe>
 								</div>
 							</section>
