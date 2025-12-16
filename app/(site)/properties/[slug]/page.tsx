@@ -252,9 +252,9 @@ export default async function PropertyDetail({ params }: Props) {
 								<h2 className="text-2xl font-light text-gray-800 mb-6">
 									Location
 								</h2>
-								{property.location_name && (
+								{property.title && (
 									<p className="text-sm text-gray-500">
-										{property.location_name}
+										{property.title}
 									</p>
 								)}
 								<div className="h-[400px] w-full">
