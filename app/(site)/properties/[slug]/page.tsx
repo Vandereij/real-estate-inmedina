@@ -249,11 +249,11 @@ export default async function PropertyDetail({ params }: Props) {
 
 						{mapEmbedUrl && (
 							<section>
-								<h2 className="text-2xl font-light text-gray-800 mb-6">
+								<h2 className="text-2xl font-light text-gray-800 mb-3">
 									Location
 								</h2>
 								{property.title && (
-									<p className="text-sm text-gray-500">
+									<p className="text-sm text-gray-500 mb-3">
 										{property.title}
 									</p>
 								)}
