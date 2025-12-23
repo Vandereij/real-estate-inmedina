@@ -88,10 +88,10 @@ export default async function HomePage() {
 					<div className="space-y-24 md:space-y-32">
 						{/* Row 1 */}
 						<div className="grid items-start gap-10 md:grid-cols-5 md:gap-12 border-t border-border pt-14">
-							<div className="relative h-48 md:h-64 overflow-hidden md:col-span-2">
+							<div className="relative h-48 md:h-64 overflow-hidden md:col-span-2 rounded-2xl">
 								<Image
-									src="/images/service-sales.jpg"
-									alt=""
+									src="/dar-xenia-refurbished.jpg"
+									alt="A Moroccan riad courtyard with traditional tiles and arches."
 									fill
 									className="object-cover transition-transform duration-500 hover:scale-105"
 								/>
@@ -121,10 +121,10 @@ export default async function HomePage() {
 
 						{/* Row 2 */}
 						<div className="grid items-start gap-10 md:grid-cols-5 md:gap-12 border-t border-border pt-14">
-							<div className="md:order-2 relative h-48 md:h-64 overflow-hidden md:col-span-2">
+							<div className="md:order-2 relative h-48 md:h-64 overflow-hidden md:col-span-2 rounded-2xl">
 								<Image
-									src="/images/service-renovation.jpg"
-									alt=""
+									src="/dar-xenia-decoration-landscape.jpg"
+									alt="Artisans working on Moroccan tadelakt and carved wood details."
 									fill
 									className="object-cover transition-transform duration-500 hover:scale-105"
 								/>
@@ -154,10 +154,10 @@ export default async function HomePage() {
 
 						{/* Row 3 */}
 						<div className="grid items-start gap-10 md:grid-cols-5 md:gap-12 border-t border-border pt-14">
-							<div className="relative h-48 md:h-64 overflow-hidden md:col-span-2">
+							<div className="relative h-48 md:h-64 overflow-hidden md:col-span-2 rounded-2xl">
 								<Image
-									src="/images/service-consulting.jpg"
-									alt=""
+									src="/documents-and-keys.jpg"
+									alt="Consultation about Moroccan property strategy."
 									fill
 									className="object-cover transition-transform duration-500 hover:scale-105"
 								/>

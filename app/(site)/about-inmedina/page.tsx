@@ -18,7 +18,7 @@ export default function AboutInmedina() {
 				<div className="relative h-[500px] w-full overflow-hidden border-b border-border">
 					{/* Background image (unchanged) */}
 					<img
-						src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop"
+						src="wall-pattern.jpg"
 						alt="Luxury homes hero banner"
 						className="absolute inset-0 h-full w-full object-cover"
 					/>

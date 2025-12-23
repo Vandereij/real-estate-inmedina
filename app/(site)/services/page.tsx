@@ -20,7 +20,7 @@ export default function ServicesPage() {
 				<div className="relative h-[500px] w-full overflow-hidden border-b border-border">
 					{/* Background image (unchanged) */}
 					<img
-						src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop"
+						src="wooden.jpg"
 						alt="Luxury homes hero banner"
 						className="absolute inset-0 h-full w-full object-cover"
 					/>
@@ -151,7 +151,7 @@ export default function ServicesPage() {
 						<div className="grid items-start gap-10 md:grid-cols-5 md:gap-12 border-t border-border pt-14">
 							<div className="relative h-56 md:h-72 overflow-hidden md:col-span-2 rounded-2xl">
 								<Image
-									src="/images/service-sales.jpg"
+									src="/dar-xenia-refurbished.jpg"
 									alt="A Moroccan riad courtyard with traditional tiles and arches."
 									fill
 									className="object-cover transition-transform duration-500 hover:scale-105"
@@ -211,7 +211,7 @@ export default function ServicesPage() {
 						<div className="grid items-start gap-10 md:grid-cols-5 md:gap-12 border-t border-border pt-14">
 							<div className="md:order-2 relative h-56 md:h-72 overflow-hidden md:col-span-2 rounded-2xl">
 								<Image
-									src="/images/service-renovation.jpg"
+									src="/dar-xenia-decoration-landscape.jpg"
 									alt="Artisans working on Moroccan tadelakt and carved wood details."
 									fill
 									className="object-cover transition-transform duration-500 hover:scale-105"
@@ -272,7 +272,7 @@ export default function ServicesPage() {
 						<div className="grid items-start gap-10 md:grid-cols-5 md:gap-12 border-t border-border pt-14">
 							<div className="relative h-56 md:h-72 overflow-hidden md:col-span-2 rounded-2xl">
 								<Image
-									src="/images/service-consulting.jpg"
+									src="/documents-and-keys.jpg"
 									alt="Consultation about Moroccan property strategy."
 									fill
 									className="object-cover transition-transform duration-500 hover:scale-105"
