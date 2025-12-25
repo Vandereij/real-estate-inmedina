@@ -6,10 +6,28 @@ import PropertyCardList from "@/components/property-card-list";
 
 export const revalidate = 60;
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+	searchParams,
+}: {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}): Promise<Metadata> {
+	const rawParams = await searchParams;
+
+	// Check if there are any params OTHER than page=1
+	const filteredParams = Object.entries(rawParams).filter(
+		([key, value]) => !(key === "page" && value === "1")
+	);
+	const hasRelevantParams = filteredParams.length > 0;
+
 	return {
 		title: "Browse Moroccan Properties for Sale & Rent - Riads, Villas & more | Real Estate InMedina",
-		description: "Explore curated Moroccan riads, villas, and apartments for sale or rent. Hand-selected properties across Morocco's medinas and regions. Character homes with authentic potential and expert guidance.",
+		description:
+			"Explore curated Moroccan riads, villas, and apartments for sale or rent. Hand-selected properties across Morocco's medinas and regions. Character homes with authentic potential and expert guidance.",
+		...(hasRelevantParams && {
+			alternates: {
+				canonical: "https://realestate.inmedina.com/properties",
+			},
+		}),
 	};
 }
 
