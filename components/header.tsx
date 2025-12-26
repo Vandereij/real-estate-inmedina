@@ -62,7 +62,7 @@ export default function Header({ isAdmin, user }: HeaderProps) {
 				<nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
 					<Link className="flex items-center gap-3" href="/">
 						<Image
-							className="grid h-8 w-8 p-1.5 place-items-center bg-foreground/90 rounded-xl"
+							className="grid h-8 w-8 p-1 place-items-center bg-foreground/90 rounded-xl"
 							alt="InMedina Logo"
 							src={nmlogosvg}
 							width={40}

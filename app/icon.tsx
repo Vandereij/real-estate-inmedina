@@ -1,0 +1,88 @@
+// app/icon.tsx
+import { ImageResponse } from "next/og";
+
+export const size = { width: 32, height: 32 };
+export const contentType = "image/png";
+
+const PADDING_PX = 6; // Increased padding for visibility
+const BG = "#000";
+
+/**
+ * Paste an Optimized/Plain SVG here (recommended):
+ * In Inkscape: File → Save As → "Plain SVG" (or "Optimized SVG")
+ */
+const RAW_SVG = `<svg version="1.1" viewBox="0 0 281.4 283.06" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient5247" x1="388.71" x2="670.11" y1="442.59" y2="442.59" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#daa554" offset="0"/>
+   <stop stop-color="#db9e45" offset=".20249"/>
+   <stop stop-color="#fbc45c" offset=".38095"/>
+   <stop stop-color="#fbed9e" offset=".5354"/>
+   <stop stop-color="#fec260" offset=".65355"/>
+   <stop stop-color="#d49d45" offset=".73058"/>
+   <stop stop-color="#daa554" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient47" x1="388.71" x2="670.11" y1="442.59" y2="442.59" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient5247"/>
+ </defs>
+ <g transform="translate(-356.79 -334.75)">
+  <g transform="translate(-31.923 33.697)" fill="url(#linearGradient5247)" stroke-miterlimit="0">
+   <g transform="matrix(.8 0 0 .8 105.9 88.514)" fill="url(#linearGradient47)">
+    <path d="m428.66 296.04 0.85547 0.0977-4.4863 1.3535 3.6816-1.4434c-9.1825-0.34997-19.279 1.7719-27.68 6.793-8.4011 5.021-15.162 13.461-15.785 24.623l-4e-3 0.11719c-1.8994 58.971-0.98589 117.89-1.3691 176.66v0.0215c-0.0535 25.553-0.10663 51.107-0.16015 76.66l0.83593 2.7793c2.3528 3.5397 6.2346 4.6563 9.4395 4.7812 3.2048 0.12491 6.1531-0.50715 8.8047-2.166l1.4062-1.3164c2.4387-3.3868 2.3824-7.0891 2.2285-9.8574-0.19627-2.3256-0.32385-4.6395-0.12109-6.9629 0.15118-68.504 0.30363-137 0.45507-205.51 38.008 19.07 68.18 50.905 97.162 82.916-9.0558 35.598-16.939 73.093-11.662 110.83l0.0312 0.19531c1.4248 7.8956 4.9396 15.955 10.588 22.24 5.6323 6.2679 13.748 10.726 23.291 10.244 11.632-0.15441 20.642-6.7912 26.156-15.299 5.5328-8.5362 8.0965-18.964 8.1289-28.484 0.22966-11.601 0.259-23.337-0.47266-35.104 29.291 31.434 61.333 63.142 103.98 77.455l4.8457-0.94531c5.1561-4.4214 5.8594-11.029 6.2559-17.451 0.39591-6.414-0.0136-13.101-0.0391-17.795v-0.0215c-0.0577-67.633 0.62732-135.38-1.2832-203.16v-4e-3l-2e-3 -2e-3c-2.5e-4 -9.8e-4 1.8e-4 -3e-3 0-4e-3v-2e-3c-0.42896-23.355-16.166-47.104-40.85-50.967-26.747-4.5142-54.291 6.39-71.648 26.824-15.315 16.731-25.278 36.855-34.219 56.746-12.531-28.105-27.114-58.244-56.615-74.291-12.888-7.0136-27.453-10.173-41.746-10.553zm-0.24804 18.182c0.0126-2.6e-4 0.0245 2.6e-4 0.0371 0l-0.46093 4.6524zm191.33 4.8535c6.4086 0.0178 24.437-0.7272 29.207 18.584l0.0703 0.25391c5.3025 17.46 2.4907 37.044 3.5215 57.168 0.21006 54.398 0.37858 108.77-0.33203 163.1-38.256-20.849-68.152-54.627-97.697-87.668-4.2039-19.4-8.6266-38.949-15.123-58.068 1.6157-10.441 8.2034-20.89 13-32.65 11.086-22.556 24.062-45.901 46.047-56.105l0.0273-0.0117c6.6278-3.1242 13.819-4.586 21.279-4.6035zm-190.71 0.13672h2e-3c24.116-0.36767 46.83 14.244 59.074 35.012l0.0527 0.0879c10.852 17.571 20.055 36.248 26.33 55.744-0.56955 1.8485-1.0172 3.7569-1.4668 5.793-0.41498 1.8793-0.85841 3.4159-1.2969 5.0078l-0.30274-0.43164c-29.752-32.677-62.699-65.346-105.02-83.205 0.26077-3.5478 0.90158-7.1107 2.2988-9.9062 1.7972-3.5957 4.1578-5.9006 8.2578-6.791l0.10743-0.0234c3.7366-0.8982 7.787-1.2207 11.963-1.2871zm93.053 147.48c2.4899 2.7252 4.9207 5.3309 6.957 7.9316 3.8926 4.9716 6.2784 9.5726 6.0156 15.521l0.0234 0.75976c2.61 24.012 7.1814 48.456-1.2637 69.562-1.3922 3.217-3.0347 4.533-4.7305 5.1738-1.7032 0.64364-3.7687 0.58505-5.9766-0.2793-4.4156-1.7287-8.54-6.6723-8.5762-12.121l-0.0312-0.53125c-3.2507-28.604 0.97991-57.586 7.582-86.018z" fill="url(#linearGradient47)" stop-color="#000000" style="paint-order:stroke markers fill"/>
+   </g>
+  </g>
+ </g>
+</svg>
+`;
+
+function sanitizeSvg(svg: string) {
+	return svg.replace(/<\?xml[\s\S]*?\?>\s*/i, "").trim();
+}
+
+function svgToDataUrl(svg: string) {
+	const clean = sanitizeSvg(svg);
+	return `data:image/svg+xml;utf8,${encodeURIComponent(clean)}`;
+}
+
+export default function Icon() {
+	const dataUrl = svgToDataUrl(RAW_SVG);
+	const logoSize = size.width - PADDING_PX * 2;
+
+	return new ImageResponse(
+		(
+			<div
+				style={{
+					background: BG,
+					width: size.width,
+					height: size.height,
+					display: "flex",
+					borderRadius: "100%",
+					alignItems: "center",
+					justifyContent: "center",
+				}}
+			>
+				<div
+					style={{
+						width: logoSize,
+						height: logoSize,
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+				>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						src={dataUrl}
+						alt="icon"
+						style={{
+							width: logoSize,
+							height: logoSize,
+						}}
+					/>
+				</div>
+			</div>
+		),
+		{
+			...size,
+		}
+	);
+}
