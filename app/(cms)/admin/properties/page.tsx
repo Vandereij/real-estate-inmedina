@@ -100,27 +100,6 @@ export default async function PropertiesPage({
 
 	return (
 		<section className="flex flex-col gap-20">
-			<div className="relative h-[500px] w-full overflow-hidden shadow-lg">
-				<img
-					src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop"
-					alt="Luxury homes hero banner"
-					className="absolute inset-0 w-full h-full object-cover"
-				/>
-				<div className="absolute inset-0 bg-linear-to-b from-black/65 to-black/85 flex items-center justify-center text-center px-6">
-					<div className="max-w-2xl text-white space-y-4">
-						<h1 className="text-xl md:text-2xl font-medium">
-							Discover Exceptional Moroccan Properties
-						</h1>
-						<p className="text-gray-200">
-							From traditional riads to contemporary villas,
-							explore our curated collection of properties across
-							Morocco. Each listing reflects our commitment to
-							quality, authenticity, and prime locations.
-						</p>
-					</div>
-				</div>
-			</div>
-
 			{/* 🏠 Properties List (Strips) */}
 			<div className="flex justify-center">
 				<div className="w-8/12 pb-16">
