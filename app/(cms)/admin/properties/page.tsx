@@ -102,11 +102,8 @@ export default async function PropertiesPage({
 		<section className="flex flex-col gap-20">
 			{/* 🏠 Properties List (Strips) */}
 			<div className="flex justify-center">
-				<div className="w-8/12 pb-16">
-					<h2 className="text-xl md:text-2xl mb-10">
-						All Properties
-					</h2>
-
+				<div className="mx-auto grid max-w-7xl px-4 pt-10 pb-16">
+					<h1 className="text-2xl font-semibold">All Properties</h1>
 					{/* Strips instead of cards */}
 					<div className="flex flex-col gap-4">
 						{data?.map((p: any) => (
@@ -143,8 +140,7 @@ export default async function PropertiesPage({
 												variant="secondary"
 												className="bg-[oklch(0.7_0_0/.50)] text-background uppercase text-xs rounded-md"
 											>
-												{p.locations?.name ||
-													"Unknown"}
+												{p.locations?.name || "Unknown"}
 											</Badge>
 										</div>
 									</div>
