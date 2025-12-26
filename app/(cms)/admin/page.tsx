@@ -54,7 +54,7 @@ export default async function AdminDashboard() {
         {/* Main */}
         <main className="grid gap-6">
           {/* Header */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="grid gap-1">
               <h1 className="text-2xl font-semibold">CMS Dashboard</h1>
               <p className="text-sm text-muted-foreground">
