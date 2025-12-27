@@ -101,129 +101,126 @@ export default async function PropertiesPage({
 	return (
 		<section className="flex flex-col gap-20">
 			{/* 🏠 Properties List (Strips) */}
-			<div className="flex justify-center">
-				<div className="mx-auto grid max-w-7xl px-4 pt-10 pb-16">
-					<h1 className="text-2xl font-semibold">All Properties</h1>
-					{/* Strips instead of cards */}
-					<div className="flex flex-col gap-4">
-						{data?.map((p: any) => (
-							<Link
-								key={p.id}
-								href={`/admin/properties/${p.id}`}
-								className="block"
-							>
-								<div className="flex flex-col sm:flex-row gap-4 border rounded-xl p-4 hover:bg-muted transition-colors">
-									{/* Image block */}
-									<div className="relative w-full sm:w-64 h-52 sm:h-40 shrink-0 overflow-hidden rounded-lg">
-										<img
-											src={
-												p.cover_image_url ||
-												"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
+			<div className="mx-auto grid max-w-7xl px-4 pt-10 pb-16">
+				<h2 className="text-xl md:text-2xl mb-10">All Properties</h2>
+
+				{/* Strips instead of cards */}
+				<div className="flex flex-col gap-4">
+					{data?.map((p: any) => (
+						<Link
+							key={p.id}
+							href={`/admin/properties/${p.id}`}
+							className="block"
+						>
+							<div className="flex flex-col sm:flex-row gap-4 border rounded-xl p-4 hover:bg-muted transition-colors">
+								{/* Image block */}
+								<div className="relative w-full sm:w-64 h-52 sm:h-40 shrink-0 overflow-hidden rounded-lg">
+									<img
+										src={
+											p.cover_image_url ||
+											"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
+										}
+										alt={p.title}
+										className="w-full h-full object-cover"
+									/>
+									<div className="absolute top-3 left-3 flex gap-2">
+										{/* Status badge (draft/published) */}
+										<Badge
+											className="bg-[oklch(0.7_0_0/.50)] text-background uppercase text-xs rounded-md"
+											variant={
+												p.status === "published"
+													? "default"
+													: "secondary"
 											}
-											alt={p.title}
-											className="w-full h-full object-cover"
-										/>
-										<div className="absolute top-3 left-3 flex gap-2">
-											{/* Status badge (draft/published) */}
-											<Badge
-												className="bg-[oklch(0.7_0_0/.50)] text-background uppercase text-xs rounded-md"
-												variant={
-													p.status === "published"
-														? "default"
-														: "secondary"
-												}
-											>
-												{p.status}
-											</Badge>
-											{/* Location badge */}
-											<Badge
-												variant="secondary"
-												className="bg-[oklch(0.7_0_0/.50)] text-background uppercase text-xs rounded-md"
-											>
-												{p.locations?.name || "Unknown"}
-											</Badge>
-										</div>
-									</div>
-
-									{/* Content block */}
-									<div className="flex flex-1 flex-col justify-between gap-2">
-										<div>
-											<div className="flex items-start justify-between gap-2">
-												<h3 className="font-semibold line-clamp-2">
-													{p.title}
-												</h3>
-												<div className="text-sm font-semibold whitespace-nowrap">
-													{p.currency}{" "}
-													{Number(
-														p.price
-													).toLocaleString()}
-												</div>
-											</div>
-
-											<div className="mt-1 text-xs uppercase text-muted-foreground flex flex-wrap gap-2">
-												{p.property_type && (
-													<span>
-														{p.property_type}
-													</span>
-												)}
-												{p.availability_type && (
-													<span>
-														• {p.availability_type}
-													</span>
-												)}
-											</div>
-										</div>
-
-										<div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-											{p.bedrooms && (
-												<div className="flex items-center gap-1">
-													<LucideBedDouble className="size-4" />
-													<span>{p.bedrooms}</span>
-												</div>
-											)}
-											{p.bathrooms && (
-												<div className="flex items-center gap-1">
-													<LucideBath className="size-4" />
-													<span>{p.bathrooms}</span>
-												</div>
-											)}
-											{p.area_sqm && (
-												<div className="flex items-center gap-1">
-													<LucideRulerDimensionLine className="size-4" />
-													<span>
-														{p.area_sqm + "m\u00B2"}
-													</span>
-												</div>
-											)}
-										</div>
-
-										<div className="mt-3 flex items-center text-sm text-muted-foreground">
-											<LucideMapPin className="size-4 mr-1" />
-											<span className="line-clamp-1">
-												{p.address_line1}
-											</span>
-										</div>
+										>
+											{p.status}
+										</Badge>
+										{/* Location badge */}
+										<Badge
+											variant="secondary"
+											className="bg-[oklch(0.7_0_0/.50)] text-background uppercase text-xs rounded-md"
+										>
+											{p.locations?.name || "Unknown"}
+										</Badge>
 									</div>
 								</div>
-							</Link>
-						))}
-					</div>
 
-					{/* Pagination */}
-					<div className="flex gap-2 mt-6 justify-center">
-						{Array.from({ length: totalPages }).map((_, i) => (
-							<Link key={i} href={`/properties?page=${i + 1}`}>
-								<Button
-									variant={
-										page === i + 1 ? "secondary" : "outline"
-									}
-									className="rounded-xl"
-								>
-									{i + 1}
-								</Button>
-							</Link>
-						))}
-					</div>
+								{/* Content block */}
+								<div className="flex flex-1 flex-col justify-between gap-2">
+									<div>
+										<div className="flex items-start justify-between gap-2">
+											<h3 className="font-semibold line-clamp-2">
+												{p.title}
+											</h3>
+											<div className="text-sm font-semibold whitespace-nowrap">
+												{p.currency}{" "}
+												{Number(
+													p.price
+												).toLocaleString()}
+											</div>
+										</div>
+
+										<div className="mt-1 text-xs uppercase text-muted-foreground flex flex-wrap gap-2">
+											{p.property_type && (
+												<span>{p.property_type}</span>
+											)}
+											{p.availability_type && (
+												<span>
+													• {p.availability_type}
+												</span>
+											)}
+										</div>
+									</div>
+
+									<div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+										{p.bedrooms && (
+											<div className="flex items-center gap-1">
+												<LucideBedDouble className="size-4" />
+												<span>{p.bedrooms}</span>
+											</div>
+										)}
+										{p.bathrooms && (
+											<div className="flex items-center gap-1">
+												<LucideBath className="size-4" />
+												<span>{p.bathrooms}</span>
+											</div>
+										)}
+										{p.area_sqm && (
+											<div className="flex items-center gap-1">
+												<LucideRulerDimensionLine className="size-4" />
+												<span>
+													{p.area_sqm + "m\u00B2"}
+												</span>
+											</div>
+										)}
+									</div>
+
+									<div className="mt-3 flex items-center text-sm text-muted-foreground">
+										<LucideMapPin className="size-4 mr-1" />
+										<span className="line-clamp-1">
+											{p.address_line1}
+										</span>
+									</div>
+								</div>
+							</div>
+						</Link>
+					))}
+				</div>
+
+				{/* Pagination */}
+				<div className="flex gap-2 mt-6 justify-center">
+					{Array.from({ length: totalPages }).map((_, i) => (
+						<Link key={i} href={`/properties?page=${i + 1}`}>
+							<Button
+								variant={
+									page === i + 1 ? "secondary" : "outline"
+								}
+								className="rounded-xl"
+							>
+								{i + 1}
+							</Button>
+						</Link>
+					))}
 				</div>
 			</div>
 		</section>
