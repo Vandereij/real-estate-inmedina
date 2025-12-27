@@ -99,7 +99,7 @@ export default async function PropertiesPage({
 	const totalPages = Math.max(1, Math.ceil((count || 0) / pageSize));
 
 	return (
-		<section className="flex flex-col gap-20">
+		<section>
 			{/* 🏠 Properties List (Strips) */}
 			<div className="mx-auto grid max-w-7xl px-4 pt-10 pb-16">
 				<h2 className="text-xl md:text-2xl mb-10">All Properties</h2>
