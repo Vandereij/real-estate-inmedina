@@ -255,7 +255,7 @@ export default function ContactPage() {
 								<Input
 									id="phone"
 									type="tel"
-									placeholder="+212 ..."
+									placeholder="Your phone number"
 									value={phone}
 									onChange={(e) => setPhone(e.target.value)}
 									className="bg-muted/80"
