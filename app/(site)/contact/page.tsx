@@ -224,6 +224,7 @@ export default function ContactPage() {
 									value={name}
 									onChange={(e) => setName(e.target.value)}
 									className="bg-muted/80"
+									required
 								/>
 							</div>
 
