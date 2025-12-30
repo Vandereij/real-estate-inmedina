@@ -10,8 +10,8 @@ type SocialProps = {
 export default function SocialLinks(linksProps: SocialProps) {
 	const color = linksProps.isHomePage ? "fill-foreground/50 hover:fill-foreground" : "fill-foreground/50 hover:fill-foreground";
 	return (
-		<nav className="mx-auto flex max-w-7xl px-4 pt-4 md:px-8 gap-8 text-sm items-center">
-			<Link className="w-3" href={"https://inmedina.com"}>
+		<nav className="mx-auto flex max-w-7xl px-4 pt-4 md:px-8 gap-8 text-sm items-center -mb-0.5">
+			{/* <Link className="w-3" href={"https://inmedina.com"}>
 				<CIcon className={`${color}`} icon={cibFacebookF} />
 			</Link>
 			<Link className="w-3" href={"https://inmedina.com"}>
@@ -19,9 +19,9 @@ export default function SocialLinks(linksProps: SocialProps) {
 			</Link>
 			<Link className="w-3" href={"https://inmedina.com"}>
 				<CIcon className={`${color}`} icon={cibPinterest} />
-			</Link>
-			<Link className="w-3" target="_blank" href={"https://chat.whatsapp.com/B6GkWGDEnhABwkbiSCLeuX"}>
-				<CIcon className={`${color}`} icon={cibWhatsapp} />
+			</Link> */}
+			<Link className={`${color} text-foreground/50 hover:text-foreground text-xs flex gap-2 flex-row-reverse`} target="_blank" href={"https://chat.whatsapp.com/B6GkWGDEnhABwkbiSCLeuX"}>
+				Contact us via WhatsApp <CIcon className={`w-3`} icon={cibWhatsapp} />
 			</Link>
 		</ nav>
 	);
