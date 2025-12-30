@@ -181,7 +181,7 @@ export default function ContactPage() {
 									className="rounded-full"
 								>
 									<a
-										href="https://wa.me/0000000000"
+										href="https://chat.whatsapp.com/B6GkWGDEnhABwkbiSCLeuX"
 										target="_blank"
 										rel="noreferrer"
 									>
@@ -192,10 +192,6 @@ export default function ContactPage() {
 										Chat on WhatsApp
 									</a>
 								</Button>
-								<p className="text-xs text-muted-foreground">
-									(Replace the number with your WhatsApp
-									contact.)
-								</p>
 							</div>
 						</div>
 					</div>

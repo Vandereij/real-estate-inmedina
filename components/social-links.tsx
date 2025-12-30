@@ -20,7 +20,7 @@ export default function SocialLinks(linksProps: SocialProps) {
 			<Link className="w-3" href={"https://inmedina.com"}>
 				<CIcon className={`${color}`} icon={cibPinterest} />
 			</Link>
-			<Link className="w-3" href={"https://inmedina.com"}>
+			<Link className="w-3" target="_blank" href={"https://chat.whatsapp.com/B6GkWGDEnhABwkbiSCLeuX"}>
 				<CIcon className={`${color}`} icon={cibWhatsapp} />
 			</Link>
 		</ nav>

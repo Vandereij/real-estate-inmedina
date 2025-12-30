@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 import CIcon from "@coreui/icons-react";
 import { cibWhatsapp } from "@coreui/icons";
 import EnquiryDialog from "./enquiry-dialog";
+import Link from "next/link";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -69,7 +70,7 @@ export default function ContactCta() {
 						subject="Website enquiry"
 						trigger={
 							<Button variant="default" className="rounded-full">
-								<Mail className="mr-2 h-4 w-4" /> Email
+								<Mail className="h-4 w-4" /> Email
 							</Button>
 						}
 						// keep your styling consistent with CTA background
@@ -77,11 +78,19 @@ export default function ContactCta() {
 					/>
 
 					<Button variant="default" className="rounded-full">
-						<CIcon
-							className="fill-accent-foreground"
-							icon={cibWhatsapp}
-						/>{" "}
-						Chat
+						<Link
+							target="_blank"
+							className="flex gap-2 items-center"
+							href={
+								"https://chat.whatsapp.com/B6GkWGDEnhABwkbiSCLeuX"
+							}
+						>
+							<CIcon
+								className="fill-accent-foreground"
+								icon={cibWhatsapp}
+							/>{" "}
+							Chat
+						</Link>
 					</Button>
 				</div>
 
