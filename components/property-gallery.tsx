@@ -30,14 +30,18 @@ interface PropertyGalleryProps {
  * 3) Stable keys based on URL to prevent DOM node reuse issues
  * 4) Optional fetchPriority on hero for faster paint
  */
-export function PropertyGallery({ images, propertyTitle }: PropertyGalleryProps) {
+export function PropertyGallery({
+	images,
+	propertyTitle,
+}: PropertyGalleryProps) {
 	const [lightboxOpen, setLightboxOpen] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [loaded, setLoaded] = useState<Record<number, boolean>>({});
 
 	// Normalize images to always have url property
 	const normalizedImages = useMemo(
-		() => images.map((img) => (typeof img === "string" ? { url: img } : img)),
+		() =>
+			images.map((img) => (typeof img === "string" ? { url: img } : img)),
 		[images]
 	);
 
@@ -99,7 +103,25 @@ export function PropertyGallery({ images, propertyTitle }: PropertyGalleryProps)
 		touchStartX.current = null;
 	};
 
-	if (!hasImages) return null;
+	if (!hasImages)
+		return (
+			<section aria-label={`${propertyTitle} gallery`} className="mb-12">
+				<div className="flex items-baseline justify-between gap-4 mb-4">
+					<h2 className="text-2xl md:text-2xl tracking-tight text-gray-900">
+						Gallery
+						<span className="ml-3 align-middle text-sm font-normal text-gray-500">
+							({total} {total === 1 ? "photo" : "photos"})
+						</span>
+					</h2>
+				</div>
+				<img
+					src="/placeholder.png"
+					alt="Property placeholder"
+					loading="lazy"
+					className="object-cover"
+				/>
+			</section>
+		);
 
 	// Decide the list of images to show in grid (first 8) and hero tile
 	const visible = normalizedImages.slice(0, 8);
@@ -114,7 +136,10 @@ export function PropertyGallery({ images, propertyTitle }: PropertyGalleryProps)
 						({total} {total === 1 ? "photo" : "photos"})
 					</span>
 				</h2>
-				<Button onClick={() => openLightbox(0)} className="flex items-center gap-2">
+				<Button
+					onClick={() => openLightbox(0)}
+					className="flex items-center gap-2"
+				>
 					<Maximize2 className="h-4 w-4" />
 					Open all
 				</Button>
@@ -152,14 +177,20 @@ export function PropertyGallery({ images, propertyTitle }: PropertyGalleryProps)
 								isLastVisible ? (
 									<div className="absolute inset-0 grid place-items-center bg-black/70">
 										<div className="text-white text-center">
-											<div className="text-4xl font-light">+{remainingCount}</div>
-											<div className="mt-1 text-xs tracking-widest">MORE PHOTOS</div>
+											<div className="text-4xl font-light">
+												+{remainingCount}
+											</div>
+											<div className="mt-1 text-xs tracking-widest">
+												MORE PHOTOS
+											</div>
 										</div>
 									</div>
 								) : undefined
 							}
 							loaded={!!loaded[idx]}
-							setLoaded={(v) => setLoaded((s) => ({ ...s, [idx]: v }))}
+							setLoaded={(v) =>
+								setLoaded((s) => ({ ...s, [idx]: v }))
+							}
 							lazy={!eager}
 						/>
 					);
@@ -176,7 +207,10 @@ export function PropertyGallery({ images, propertyTitle }: PropertyGalleryProps)
 						transition={{ duration: 0.2 }}
 						className="fixed inset-0 z-50"
 					>
-						<div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={closeLightbox} />
+						<div
+							className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+							onClick={closeLightbox}
+						/>
 
 						<div
 							role="dialog"
@@ -224,7 +258,9 @@ export function PropertyGallery({ images, propertyTitle }: PropertyGalleryProps)
 									src={normalizedImages[currentIndex].url}
 									alt={
 										normalizedImages[currentIndex].alt ||
-										`${propertyTitle} - Image ${currentIndex + 1}`
+										`${propertyTitle} - Image ${
+											currentIndex + 1
+										}`
 									}
 									loading="eager"
 									className="max-h-[80vh] w-auto rounded-xl shadow-2xl ring-1 ring-white/10"
@@ -261,12 +297,17 @@ export function PropertyGallery({ images, propertyTitle }: PropertyGalleryProps)
 														? "border-white scale-105"
 														: "border-transparent opacity-70 hover:opacity-100"
 												}`}
-												aria-label={`Go to image ${i + 1}`}
+												aria-label={`Go to image ${
+													i + 1
+												}`}
 											>
 												{/* eslint-disable-next-line @next/next/no-img-element */}
 												<img
 													src={img.url}
-													alt={img.alt || `Thumbnail ${i + 1}`}
+													alt={
+														img.alt ||
+														`Thumbnail ${i + 1}`
+													}
 													loading="lazy"
 													className="h-16 w-16 object-cover"
 												/>
