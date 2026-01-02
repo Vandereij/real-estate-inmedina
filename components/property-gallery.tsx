@@ -118,7 +118,7 @@ export function PropertyGallery({
 					initial={{ opacity: 0, scale: 0.98 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.25 }}
-					src="/placeholder.png"
+					src="/placeholder.webp"
 					alt="Property placeholder"
 					loading="lazy"
 					className="object-cover"
