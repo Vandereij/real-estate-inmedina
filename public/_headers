@@ -1,8 +1,5 @@
 # public/_headers
 
-/your-image-name.jpg
-  Cache-Control: public, max-age=31536000, immutable
-
 # You can also apply rules to all images or specific types
 /images/*
   Cache-Control: public, max-age=31536000, immutable
