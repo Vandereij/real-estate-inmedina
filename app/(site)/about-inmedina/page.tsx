@@ -153,9 +153,9 @@ export default function AboutInmedina() {
 					<div className="grid gap-12 md:grid-cols-2 md:gap-16">
 						{/* Stefano */}
 						<article className="space-y-4">
-							<div className="relative h-64 w-full overflow-hidden rounded-2xl">
+							<div className="relative h-64 w-64 overflow-hidden rounded-full place-self-center">
 								<Image
-									src="/images/about-stefano.jpg"
+									src="/stefano.webp"
 									alt="Stefano – founder of InMedina."
 									fill
 									className="object-cover"
@@ -199,9 +199,9 @@ export default function AboutInmedina() {
 
 						{/* Alberto */}
 						<article className="space-y-4">
-							<div className="relative h-64 w-full overflow-hidden rounded-2xl">
+							<div className="relative h-64 w-64 overflow-hidden rounded-full place-self-center">
 								<Image
-									src="/images/about-alberto.jpg"
+									src="/alberto.webp"
 									alt="Alberto – Operations & Project Logistics Manager at InMedina."
 									fill
 									className="object-cover"
