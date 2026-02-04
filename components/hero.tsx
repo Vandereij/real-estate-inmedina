@@ -64,6 +64,7 @@ export default function Hero() {
 						<motion.img
 							src="https://inmedina.com/wp-content/uploads/2024/03/riad-bamileke-suite-wide-shot.jpg?q=80&w=2070&auto=format&fit=crop"
 							alt="Moroccan courtyard"
+							fetchPriority="high"
 							className="h-[300px] w-full rounded-3xl object-cover md:h-[360px]"
 							initial={{ opacity: 0, scale: 0.97 }}
 							whileInView={{ opacity: 1, scale: 1 }}
