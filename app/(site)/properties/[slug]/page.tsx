@@ -28,7 +28,7 @@ export async function generateMetadata({
 	const { data: property, error } = await supabase
 		.from("properties")
 		.select(
-			"title, excerpt, seo_title, seo_description, seo_canonical, seo_robots, status"
+			"title, excerpt, seo_title, seo_description, seo_canonical, seo_robots, status",
 		)
 		.eq("slug", slug)
 		.maybeSingle();
@@ -149,30 +149,38 @@ export default async function PropertyDetail({ params }: Props) {
 									{Number(property.price).toLocaleString()}
 								</div>
 							</div>
-							<div>
-								<strong className="block text-sm font-normal text-gray-500 mb-1">
-									Bedrooms
-								</strong>
-								<div className="text-xl font-medium text-gray-800">
-									{property.bedrooms}
+							{property.bedrooms && (
+								<div>
+									<strong className="block text-sm font-normal text-gray-500 mb-1">
+										Bedrooms
+									</strong>
+									<div className="text-xl font-medium text-gray-800">
+										{property.bedrooms}
+									</div>
 								</div>
-							</div>
-							<div>
-								<strong className="block text-sm font-normal text-gray-500 mb-1">
-									Bathrooms
-								</strong>
-								<div className="text-xl font-medium text-gray-800">
-									{property.bathrooms}
+							)}
+							{property.bathrooms && (
+								<div>
+									<strong className="block text-sm font-normal text-gray-500 mb-1">
+										Bathrooms
+									</strong>
+									<div className="text-xl font-medium text-gray-800">
+										{property.bathrooms}
+									</div>
 								</div>
-							</div>
-							<div>
-								<strong className="block text-sm font-normal text-gray-500 mb-1">
-									Area
-								</strong>
-								<div className="text-xl font-medium text-gray-800">
-									{property.area_sqft ? `${property.area_sqft} sqft` : `${property.area_sqm} m²`} 
+							)}
+							{(property.area_sqft || property.area_sqm) && (
+								<div>
+									<strong className="block text-sm font-normal text-gray-500 mb-1">
+										Area
+									</strong>
+									<div className="text-xl font-medium text-gray-800">
+										{property.area_sqft
+											? `${property.area_sqft} sqft`
+											: `${property.area_sqm} m²`}
+									</div>
 								</div>
-							</div>
+							)}
 						</div>
 
 						<section className="mb-12">
@@ -189,7 +197,7 @@ export default async function PropertyDetail({ params }: Props) {
 
 						{(() => {
 							const amenities = getAmenitiesFromProperty(
-								property.amenities
+								property.amenities,
 							);
 							const hasAmenities =
 								Object.keys(amenities).length > 0;
@@ -222,7 +230,7 @@ export default async function PropertyDetail({ params }: Props) {
 														))}
 													</div>
 												</div>
-											)
+											),
 										)}
 									</div>
 								</section>
