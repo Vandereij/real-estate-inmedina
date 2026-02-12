@@ -62,7 +62,7 @@ export default function Hero() {
 						className="flex-1"
 					>
 						<motion.img
-							src="https://inmedina.com/wp-content/uploads/2024/03/riad-bamileke-suite-wide-shot.jpg?q=80&w=2070&auto=format&fit=crop"
+							src="riad-bamileke-suite-wide-shot.webp"
 							alt="Moroccan courtyard"
 							fetchPriority="high"
 							className="h-[300px] w-full rounded-3xl object-cover md:h-[360px]"
