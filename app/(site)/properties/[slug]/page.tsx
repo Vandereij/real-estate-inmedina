@@ -170,7 +170,7 @@ export default async function PropertyDetail({ params }: Props) {
 									Area
 								</strong>
 								<div className="text-xl font-medium text-gray-800">
-									{property.area_sqft} sqft
+									{property.area_sqft ? `${property.area_sqft} sqft` : `${property.area_sqm} m²`} 
 								</div>
 							</div>
 						</div>
