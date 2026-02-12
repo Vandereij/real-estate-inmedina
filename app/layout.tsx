@@ -24,6 +24,8 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
       </head>
       <body className="min-h-screen bg-background text-[#1e1e1e]">
